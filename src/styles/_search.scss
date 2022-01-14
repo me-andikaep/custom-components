@@ -159,6 +159,15 @@
   .container-adv-filter{
     width: 100%;
     padding: 20px 30px;
+    display: block;
+    transition: display 280ms ease 0s;
+    background: #E5E5E5;
+    border-radius: 5px;
+
+    &.hide {
+      display: none;
+      transition: display 280ms ease 0s;
+    }
   }
 }
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import DropdownSearch from '../dropdown/DropdownSearch';
 
 const SearchBar2 = () => {
 	const [filterIsOpen, setFilterIsOpen] = useState(true);
@@ -9,10 +10,19 @@ const SearchBar2 = () => {
 					<button className='btn-src'></button>
 					<input />
 				</div>
-				<button className='btn-filter'>Hide Filter</button>
+				<button
+					className='btn-filter'
+					onClick={() => setFilterIsOpen(!filterIsOpen)}
+				>
+					{filterIsOpen ? 'Hide' : 'Show'} Filter
+				</button>
 				<button className='btn-filter'>filter</button>
 			</div>
-			{filterIsOpen && <div className='container-adv-filter'></div>}
+			<div className={`${filterIsOpen ? '' : 'hide'} container-adv-filter`}>
+				<div style={{ width: 200 }}>
+					<DropdownSearch />
+				</div>
+			</div>
 		</div>
 	);
 };
