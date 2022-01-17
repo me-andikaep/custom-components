@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export default function DropdownSearch() {
 	const data = [
@@ -52,9 +52,13 @@ export default function DropdownSearch() {
 			});
 	}, []);
 
-	const toggleClose = (e) => {
+	// const toggleClose = (e) => {
+	// 	setOpen(e && e.target === ref.current);
+	// };
+
+	const toggleClose = useCallback((e) => {
 		setOpen(e && e.target === ref.current);
-	};
+	}, []);
 
 	function filter(options) {
 		return options.filter(
@@ -68,11 +72,19 @@ export default function DropdownSearch() {
 		return '';
 	}
 
-	function selectOption(option) {
+	// function selectOption(option) {
+	// 	setQuery('');
+	// 	setSelected(option.country);
+	// 	setOpen(false);
+	// }
+
+	const selectOption = useCallback((option) => {
 		setQuery('');
 		setSelected(option.country);
 		setOpen(false);
-	}
+	}, []);
+
+	console.log('selected ', selected);
 
 	return (
 		<div className='dropdown-search'>
